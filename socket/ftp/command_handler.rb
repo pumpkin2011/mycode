@@ -55,8 +55,8 @@ module FTP
 
       when 'LIST'
         connection.respond "125 Opening data connection for file list"
-        
-        result = Dir.entries(pwd).join(CRLF) 
+
+        result = Dir.entries(pwd).join(CRLF)
         @data_socket.write(result)
         @data_socket.close
 
@@ -67,6 +67,7 @@ module FTP
 
       else
         "502 Don't know how to respond to #{cmd}"
+      end
     end
 
   end
