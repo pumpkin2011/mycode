@@ -60,7 +60,7 @@ module FTP
         to_write = @handles.values.select(&:monitor_for_writing?).map(&:client)
         readables, writables = IO.select(to_read + [@control_socket], to_write)
         readables.each do |socket|
-          if socket == @control_socketz
+          if socket == @control_socket
             io = @control_socket.accept
             connection = Connection.new(io)
             @handles[io.fileno] = connection
